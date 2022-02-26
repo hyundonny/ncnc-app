@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next';
 import { useState } from 'react';
 
 import DefaultHeader from '@/components/headers/default-header';
-import FaqHeader from '@/components/contacts/faq-header';
-import TabToggle from '@/components/contacts/tab-toggle';
-import FaqDropdown from '@/components/contacts/faq-dropdown';
+import FaqHeader from '@/components/faq/faq-header';
+import TabToggle from '@/components/faq/tab-toggle';
+import FaqDropdown from '@/components/faq/faq-dropdown';
 
 import { Category, ItemsObject } from '@/types/contacts';
 import { getFaqCategories, getFaqItems } from '@/lib/faq-api';

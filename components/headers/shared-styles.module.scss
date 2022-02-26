@@ -1,16 +1,18 @@
 @import '@/styles/variable.scss';
 
 .header {
-  height: 5rem;
-  font-size: 1.5rem;
-  line-height: 1.8;
+  height: 5.6rem;
+  font-size: 1.6rem;
   font-weight: 600;
+  color: #333;
 
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $white;
+}
 
+.page.header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -18,14 +20,26 @@
   z-index: 10;
 }
 
-.hamburger {
-  width: 2.4rem;
-  height: 2.4rem;
+.sidebar.header {
+  position: relative;
+  z-index: 11;
+}
 
-  position: absolute;
-  left: 2rem;
+.icon {
   top: 50%;
   transform: translateY(-50%);
-
   cursor: pointer;
+  position: absolute;
+}
+
+.page.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  left: 2rem;
+}
+
+.sidebar.icon {
+  right: 2rem;
+  width: 2.2rem;
+  height: 2.2rem;
 }

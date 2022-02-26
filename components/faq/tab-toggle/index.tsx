@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
 import classNames from 'classnames/bind';
 
-import TabToggleButton from '@/components/contacts/tab-toggle-button';
+import TabToggleButton from '@/components/faq/tab-toggle-button';
 
 import { Category } from '@/types/contacts';
-import styles from '@/components/contacts/tab-toggle/styles.module.scss';
+import styles from '@/components/faq/tab-toggle/styles.module.scss';
 
 const cx = classNames.bind(styles);
 
