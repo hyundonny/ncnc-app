@@ -47,20 +47,20 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
       ...option,
       id: idx,
       expireAt: `${new Intl.DateTimeFormat('ko-KR').format(
-        new Date(option.expireAt)
+        new Date(option.expireAt),
       )} 까지`,
       sellingPrice: option.sellingPrice,
     });
   });
   const warningArray = conItem.warning?.split('\n\n');
   const splitWarningArray = warningArray
-    ?.map((strings) => strings.split(']\n'))
+    ?.map(strings => strings.split(']\n'))
     ?.map(
-      (strings) =>
+      strings =>
         (strings = [
           strings[0].replace('[', ''),
           strings[1]?.replace(/-/g, '·'),
-        ])
+        ]),
     );
 
   return (
@@ -77,7 +77,7 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
         />
         <div className={cx('content-box')}>
           {splitWarningArray &&
-            splitWarningArray.map((warning) => {
+            splitWarningArray.map(warning => {
               return (
                 <div key={warning[0]}>
                   <div className={cx('content-title')}>{warning[0]}</div>
@@ -91,15 +91,15 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
         <div className={cx('option-box')}>
           <div className={cx('option-header')}>
             옵션 선택하기
-            <button type='button' onClick={closeOption}>
+            <button type="button" onClick={closeOption}>
               <CloseIcon className={cx('close-icon')} />
             </button>
           </div>
           <ul>
-            {newOptions.map((option) => (
+            {newOptions.map(option => (
               <li key={option.id}>
                 <button
-                  type='button'
+                  type="button"
                   className={cx('option-each')}
                   onClick={() => {
                     chooseOption({
@@ -107,8 +107,7 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
                       count: option.count,
                       sellingPrice: option.sellingPrice,
                     });
-                  }}
-                >
+                  }}>
                   <div className={cx('option-contents')}>
                     <div className={cx('option-content')}>
                       <p className={cx('option-content-title')}>유효기간</p>
@@ -126,7 +125,7 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
                   <p className={cx('option-discount')}>
                     {calcDiscountRate(
                       conItem.originalPrice,
-                      option.sellingPrice
+                      option.sellingPrice,
                     )}{' '}
                     %
                   </p>
@@ -138,36 +137,32 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
       </section>
       <button
         onClick={buyItem}
-        type='button'
-        className={cx('select-button', 'purchase-button')}
-      >
+        type="button"
+        className={cx('select-button', 'purchase-button')}>
         {PURCHASE_MESSAGE}
       </button>
       <section
-        className={cx('option-selected-box', { 'ready-buy': selectedOption })}
-      >
-        <button type='button' onClick={openOption} className={cx('re-select')}>
+        className={cx('option-selected-box', { 'ready-buy': selectedOption })}>
+        <button type="button" onClick={openOption} className={cx('re-select')}>
           {selectedOption &&
             `${selectedOption.expireAt} / ${selectedOption.sellingPrice}원`}
           <PencilIcon className={cx('pencil-icon')} />
         </button>
       </section>
       <button
-        type='button'
+        type="button"
         onClick={openOption}
         className={cx('select-button', {
           'cant-buy': isActive,
           hide: selectedOption,
-        })}
-      >
+        })}>
         {isActive ? PURCHASE_MESSAGE : SELECT_OPTION_MESSAGE}
       </button>
       <section className={cx('option-background', { hide: !isActive })}>
         <button
           className={cx('close-button')}
-          type='button'
-          onClick={closeOption}
-        ></button>
+          type="button"
+          onClick={closeOption}></button>
       </section>
     </div>
   );

@@ -17,7 +17,7 @@ const FaqDropdownItem = ({
   const [open, setOpen] = useState<boolean>(false);
 
   const toggleDropdown = () => {
-    setOpen((prev) => !prev);
+    setOpen(prev => !prev);
   };
 
   const questionIconClassName = cx({

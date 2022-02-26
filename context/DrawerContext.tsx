@@ -11,7 +11,7 @@ const drawerContextDefaultValues: DrawerContextType = {
 };
 
 const DrawerContext = createContext<DrawerContextType>(
-  drawerContextDefaultValues
+  drawerContextDefaultValues,
 );
 
 interface DrawerContextProps {
@@ -20,7 +20,7 @@ interface DrawerContextProps {
 
 export const DrawerContextProvider = ({ children }: DrawerContextProps) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const toggleDrawer = () => setDrawerOpen((prev) => !prev);
+  const toggleDrawer = () => setDrawerOpen(prev => !prev);
 
   return (
     <DrawerContext.Provider value={{ drawerOpen, toggleDrawer }}>

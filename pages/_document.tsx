@@ -4,10 +4,10 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang='ko'>
+      <Html lang="ko">
         <Head>
-          <meta charSet='utf-8' />
-          <meta name='description' content='NCNC app clone' />
+          <meta charSet="utf-8" />
+          <meta name="description" content="NCNC app clone" />
         </Head>
         <body>
           <Main />

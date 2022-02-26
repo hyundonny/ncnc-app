@@ -9,7 +9,7 @@ const Custom404Component = () => {
   return (
     <div className={cx('four-o-four')}>
       <h1 className={cx('title')}>404</h1>
-      <Link href='/'>
+      <Link href="/">
         <a className={cx('button')}>홈으로 돌아가기</a>
       </Link>
     </div>

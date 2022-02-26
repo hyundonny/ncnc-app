@@ -14,7 +14,7 @@ function Contacts({ types, items }: { types: Category[]; items: ItemsObject }) {
 
   return (
     <>
-      <DefaultHeader title='고객센터' />
+      <DefaultHeader title="고객센터" />
       <FaqHeader />
       <TabToggle tabs={types} activeTab={tab} setTab={setTab} />
       <FaqDropdown activeTab={tab} items={items} />

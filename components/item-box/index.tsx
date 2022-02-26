@@ -1,7 +1,7 @@
-import classNames from "classnames/bind";
+import classNames from 'classnames/bind';
 
-import styles from "@/components/item-box/styles.module.scss";
-import { addComma } from "utils/addComma";
+import styles from '@/components/item-box/styles.module.scss';
+import { addComma } from 'utils/addComma';
 
 interface ItemBoxProps {
   name: string;
@@ -23,15 +23,15 @@ const ItemBox = (props: ItemBoxProps): JSX.Element => {
   });
 
   return (
-    <div className={cx("box")}>
-      <img className={cx("img")} src={image} alt="discount_product" />
-      <div className={cx("info")}>
-        {store && <div className={cx("store")}>{store}</div>}
+    <div className={cx('box')}>
+      <img className={cx('img')} src={image} alt="discount_product" />
+      <div className={cx('info')}>
+        {store && <div className={cx('store')}>{store}</div>}
         <div className={ProductNameStyle}>{name}</div>
-        <div className={cx("price")}>
-          <div className={cx("discount-rate")}>{discount}%</div>
-          <div className={cx("selling-price")}>{addComma(price)}원</div>
-          <div className={cx("original-price")}>{addComma(original)}원</div>
+        <div className={cx('price')}>
+          <div className={cx('discount-rate')}>{discount}%</div>
+          <div className={cx('selling-price')}>{addComma(price)}원</div>
+          <div className={cx('original-price')}>{addComma(original)}원</div>
         </div>
       </div>
     </div>

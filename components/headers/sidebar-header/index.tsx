@@ -14,7 +14,7 @@ function SidebarHeader({ title }: { title: string }) {
   return (
     <header className={cx('header', 'sidebar')}>
       {title}
-      <button type='button' onClick={toggleDrawer}>
+      <button type="button" onClick={toggleDrawer}>
         <CloseIcon className={cx('icon', 'sidebar')} />
       </button>
     </header>

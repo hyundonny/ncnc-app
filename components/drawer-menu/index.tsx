@@ -19,9 +19,9 @@ function DrawerMenu() {
 
   return (
     <aside className={drawerClassName}>
-      <SidebarHeader title='마이 페이지' />
+      <SidebarHeader title="마이 페이지" />
       <section className={cx('drawer-contents')}>
-        <Link href='/faq'>
+        <Link href="/faq">
           <a className={cx('customer-center-button')} onClick={toggleDrawer}>
             <span>고객 센터</span>
             <ChevronRightIcon />
