@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 import ChevronDownIcon from '@/components/icons/ChevronDownIcon';
 
-import styles from '@/components/contacts/faq-dropdown-item/styles.module.scss';
+import styles from '@/components/faq/faq-dropdown-item/styles.module.scss';
 
 const cx = classNames.bind(styles);
 

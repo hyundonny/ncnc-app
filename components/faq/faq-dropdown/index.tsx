@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
-import FaqDropdownItem from '@/components/contacts/faq-dropdown-item';
+import FaqDropdownItem from '@/components/faq/faq-dropdown-item';
 
 import { ItemsObject } from '@/types/contacts';
-import styles from '@/components/contacts/faq-dropdown/styles.module.scss';
+import styles from '@/components/faq/faq-dropdown/styles.module.scss';
 
 const cx = classNames.bind(styles);
 

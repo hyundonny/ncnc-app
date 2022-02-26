@@ -2,17 +2,17 @@ import classNames from 'classnames/bind';
 
 import HamburgerIcon from '@/components/icons/HamburgerIcon';
 
-import styles from '@/components/headers/home-header/styles.module.scss';
+import sharedStyles from '@/components/headers/shared-styles.module.scss';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(sharedStyles);
 
 function HomeHeader({ toggleDrawer }: { toggleDrawer: () => void }) {
   return (
-    <header className={cx('header')}>
+    <header className={cx('header', 'page')}>
       <button
         type='button'
         onClick={toggleDrawer}
-        className={cx('hamburger')}
+        className={cx('icon', 'page')}
         id='sidebar-button'
       >
         <HamburgerIcon />

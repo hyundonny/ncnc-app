@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import { Category } from '@/types/contacts';
 
-import styles from '@/components/contacts/tab-toggle-button/styles.module.scss';
+import styles from '@/components/faq/tab-toggle-button/styles.module.scss';
 
 const cx = classNames.bind(styles);
 
