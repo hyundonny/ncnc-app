@@ -1,5 +1,5 @@
-import classNames from "classnames/bind";
-import styles from "@/components/main/carousel/carousel-btn/styles.module.scss";
+import classNames from 'classnames/bind';
+import styles from '@/components/main/carousel/carousel-btn/styles.module.scss';
 
 interface CarouselBtnProps {
   bannerLen: number;
@@ -14,7 +14,7 @@ const CarouselBtn = (props: CarouselBtnProps): JSX.Element => {
 
   return (
     <div>
-      {Array.from(Array(bannerLen).keys()).map((idx) => (
+      {Array.from(Array(bannerLen).keys()).map(idx => (
         <button
           key={idx}
           className={cx({ btn: true, active: active === idx })}

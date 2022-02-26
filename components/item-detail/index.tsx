@@ -1,16 +1,16 @@
-import { useState } from "react";
-import classNames from "classnames/bind";
+import { useState } from 'react';
+import classNames from 'classnames/bind';
 
-import DefaultHeader from "@/components/headers/default-header";
-import CloseIcon from "@/components/icons/CloseIcon";
-import PencilIcon from "@/components/icons/PencilIcon";
-import ItemBox from "@/components/item-box";
+import DefaultHeader from '@/components/headers/default-header';
+import CloseIcon from '@/components/icons/CloseIcon';
+import PencilIcon from '@/components/icons/PencilIcon';
+import ItemBox from '@/components/item-box';
 
-import { ItemDetailType, OptionType } from "@/types/productDetail";
-import { calcDiscountRate } from "@/utils/calcDiscountRate";
-import { addComma } from "@/utils/addComma";
-import styles from "@/components/item-detail/styles.module.scss";
-import { useRouter } from "next/router";
+import { ItemDetailType, OptionType } from '@/types/productDetail';
+import { calcDiscountRate } from '@/utils/calcDiscountRate';
+import { addComma } from '@/utils/addComma';
+import styles from '@/components/item-detail/styles.module.scss';
+import { useRouter } from 'next/router';
 
 interface ItemDetailProps {
   conItem: ItemDetailType;
@@ -38,35 +38,35 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
   };
 
   const buyItem = () => {
-    alert("로그인을 해주세요!");
-    router.push("/");
+    alert('로그인을 해주세요!');
+    router.push('/');
   };
 
   const newOptions = conItem.options.map((option, idx) => {
     return (option = {
       ...option,
       id: idx,
-      expireAt: `${new Intl.DateTimeFormat("ko-KR").format(
-        new Date(option.expireAt)
+      expireAt: `${new Intl.DateTimeFormat('ko-KR').format(
+        new Date(option.expireAt),
       )} 까지`,
       sellingPrice: option.sellingPrice,
     });
   });
-  const warningArray = conItem.warning?.split("\n\n");
+  const warningArray = conItem.warning?.split('\n\n');
   const splitWarningArray = warningArray
-    ?.map((strings) => strings.split("]\n"))
+    ?.map(strings => strings.split(']\n'))
     ?.map(
-      (strings) =>
+      strings =>
         (strings = [
-          strings[0].replace("[", ""),
-          strings[1]?.replace(/-/g, "·"),
-        ])
+          strings[0].replace('[', ''),
+          strings[1]?.replace(/-/g, '·'),
+        ]),
     );
 
   return (
-    <div className={cx("container")}>
+    <div className={cx('container')}>
       <DefaultHeader />
-      <main className={cx("content-wrapper")}>
+      <main className={cx('content-wrapper')}>
         <ItemBox
           name={conItem.name}
           store={conItem.conCategory2.name}
@@ -75,59 +75,58 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
           original={conItem.originalPrice}
           image={conItem.imageUrl}
         />
-        <div className={cx("content-box")}>
+        <div className={cx('content-box')}>
           {splitWarningArray &&
-            splitWarningArray.map((warning) => {
+            splitWarningArray.map(warning => {
               return (
                 <div key={warning[0]}>
-                  <div className={cx("content-title")}>{warning[0]}</div>
-                  <div className={cx("content-paragraph")}>{warning[1]}</div>
+                  <div className={cx('content-title')}>{warning[0]}</div>
+                  <div className={cx('content-paragraph')}>{warning[1]}</div>
                 </div>
               );
             })}
         </div>
       </main>
-      <section className={cx("option-section", { hide: !isActive })}>
-        <div className={cx("option-box")}>
-          <div className={cx("option-header")}>
+      <section className={cx('option-section', { hide: !isActive })}>
+        <div className={cx('option-box')}>
+          <div className={cx('option-header')}>
             옵션 선택하기
             <button type="button" onClick={closeOption}>
-              <CloseIcon className={cx("close-icon")} />
+              <CloseIcon className={cx('close-icon')} />
             </button>
           </div>
           <ul>
-            {newOptions.map((option) => (
+            {newOptions.map(option => (
               <li key={option.id}>
                 <button
                   type="button"
-                  className={cx("option-each")}
+                  className={cx('option-each')}
                   onClick={() => {
                     chooseOption({
                       expireAt: option.expireAt,
                       count: option.count,
                       sellingPrice: option.sellingPrice,
                     });
-                  }}
-                >
-                  <div className={cx("option-contents")}>
-                    <div className={cx("option-content")}>
-                      <p className={cx("option-content-title")}>유효기간</p>
-                      <p className={cx("option-content-title")}>할인가</p>
+                  }}>
+                  <div className={cx('option-contents')}>
+                    <div className={cx('option-content')}>
+                      <p className={cx('option-content-title')}>유효기간</p>
+                      <p className={cx('option-content-title')}>할인가</p>
                     </div>
-                    <div className={cx("option-content")}>
-                      <p className={cx("option-content-detail")}>
+                    <div className={cx('option-content')}>
+                      <p className={cx('option-content-detail')}>
                         {option.expireAt}
                       </p>
-                      <p className={cx("option-content-detail")}>
+                      <p className={cx('option-content-detail')}>
                         {addComma(option.sellingPrice)}
                       </p>
                     </div>
                   </div>
-                  <p className={cx("option-discount")}>
+                  <p className={cx('option-discount')}>
                     {calcDiscountRate(
                       conItem.originalPrice,
-                      option.sellingPrice
-                    )}{" "}
+                      option.sellingPrice,
+                    )}{' '}
                     %
                   </p>
                 </button>
@@ -139,41 +138,37 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
       <button
         onClick={buyItem}
         type="button"
-        className={cx("select-button", "purchase-button")}
-      >
+        className={cx('select-button', 'purchase-button')}>
         {PURCHASE_MESSAGE}
       </button>
       <section
-        className={cx("option-selected-box", { "ready-buy": selectedOption })}
-      >
-        <button type="button" onClick={openOption} className={cx("re-select")}>
+        className={cx('option-selected-box', { 'ready-buy': selectedOption })}>
+        <button type="button" onClick={openOption} className={cx('re-select')}>
           {selectedOption &&
             `${selectedOption.expireAt} / ${selectedOption.sellingPrice}원`}
-          <PencilIcon className={cx("pencil-icon")} />
+          <PencilIcon className={cx('pencil-icon')} />
         </button>
       </section>
       <button
         type="button"
         onClick={openOption}
-        className={cx("select-button", {
-          "cant-buy": isActive,
+        className={cx('select-button', {
+          'cant-buy': isActive,
           hide: selectedOption,
-        })}
-      >
+        })}>
         {isActive ? PURCHASE_MESSAGE : SELECT_OPTION_MESSAGE}
       </button>
-      <section className={cx("option-background", { hide: !isActive })}>
+      <section className={cx('option-background', { hide: !isActive })}>
         <button
-          className={cx("close-button")}
+          className={cx('close-button')}
           type="button"
-          onClick={closeOption}
-        ></button>
+          onClick={closeOption}></button>
       </section>
     </div>
   );
 };
 
-const PURCHASE_MESSAGE = "구매하기";
-const SELECT_OPTION_MESSAGE = "옵션 선택하기";
+const PURCHASE_MESSAGE = '구매하기';
+const SELECT_OPTION_MESSAGE = '옵션 선택하기';
 
 export default ItemDetail;

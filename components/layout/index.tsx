@@ -30,7 +30,7 @@ function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Head>
         <title>니콘내콘</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main className={cx('outer-container')}>
         <main className={className} ref={mainRef}>

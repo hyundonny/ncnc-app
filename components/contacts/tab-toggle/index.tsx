@@ -17,7 +17,7 @@ const TabToggle = ({
   activeTab: string;
   setTab: Dispatch<SetStateAction<string>>;
 }) => {
-  const renderedButtons = tabs.map((tab) => (
+  const renderedButtons = tabs.map(tab => (
     <TabToggleButton
       key={tab.key}
       tab={tab}

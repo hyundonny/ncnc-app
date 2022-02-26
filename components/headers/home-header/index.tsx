@@ -10,11 +10,10 @@ function HomeHeader({ toggleDrawer }: { toggleDrawer: () => void }) {
   return (
     <header className={cx('header')}>
       <button
-        type='button'
+        type="button"
         onClick={toggleDrawer}
         className={cx('hamburger')}
-        id='sidebar-button'
-      >
+        id="sidebar-button">
         <HamburgerIcon />
       </button>
       니콘내콘

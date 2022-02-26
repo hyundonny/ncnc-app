@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import classNames from "classnames/bind";
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import classNames from 'classnames/bind';
 
-import styles from "@/components/main/carousel/styles.module.scss";
-import bannerList, { fakeBanner } from "constants/banner";
-import CarouselBtn from "./carousel-btn";
+import styles from '@/components/main/carousel/styles.module.scss';
+import bannerList, { fakeBanner } from 'constants/banner';
+import CarouselBtn from './carousel-btn';
 
 const cx = classNames.bind(styles);
 
@@ -40,20 +40,19 @@ const Carousel = (): JSX.Element => {
   });
 
   return (
-    <div className={cx("box")}>
+    <div className={cx('box')}>
       <div
-        className={cx("carousel")}
+        className={cx('carousel')}
         style={{
           transform: `translateX(-${
             bannerActive * (100 / (bannerList.length + 1))
           }%)`,
           transitionDuration: `${speed}ms`,
-        }}
-      >
+        }}>
         {[...bannerList, fakeBanner].map((item, idx) => (
-          <div key={idx} className={cx("banner")}>
+          <div key={idx} className={cx('banner')}>
             <Image
-              className={cx("img")}
+              className={cx('img')}
               src={item}
               layout="fill"
               objectFit="cover"

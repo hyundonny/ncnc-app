@@ -11,8 +11,15 @@ interface ItemDetailProps {
   errorMessage: string;
 }
 
-const ItemDetailPage: NextPage<ItemDetailProps> = ({ conItem, errorMessage }: ItemDetailProps) => {
-  return conItem ? <ItemDetail conItem={conItem} /> : <CenteredContainer message={errorMessage} />;
+const ItemDetailPage: NextPage<ItemDetailProps> = ({
+  conItem,
+  errorMessage,
+}: ItemDetailProps) => {
+  return conItem ? (
+    <ItemDetail conItem={conItem} />
+  ) : (
+    <CenteredContainer message={errorMessage} />
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

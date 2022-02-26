@@ -1,11 +1,11 @@
-import HomeHeader from "@/components/headers/home-header";
-import Main from "@/components/main";
+import HomeHeader from '@/components/headers/home-header';
+import Main from '@/components/main';
 
-import { useDrawer } from "@/context/DrawerContext";
-import { getCategory, getSaleItem } from "@/lib/home-api";
-import { CategoryType } from "@/types/category";
-import { SaleItemType } from "@/types/saleItem";
-import { GetServerSideProps, NextPage } from "next";
+import { useDrawer } from '@/context/DrawerContext';
+import { getCategory, getSaleItem } from '@/lib/home-api';
+import { CategoryType } from '@/types/category';
+import { SaleItemType } from '@/types/saleItem';
+import { GetServerSideProps, NextPage } from 'next';
 
 interface SaleItemProps {
   saleItem: SaleItemType;
@@ -20,7 +20,7 @@ const Home: NextPage<SaleItemProps> = ({
   return (
     <>
       <HomeHeader toggleDrawer={toggleDrawer} />
-      <Main saleItem={saleItem} category={category} />;
+      <Main saleItem={saleItem} category={category} />
     </>
   );
 };

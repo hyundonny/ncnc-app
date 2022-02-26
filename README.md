@@ -4,7 +4,7 @@
 
 ## 📌 배포
 
-- [배포링크](https://ncnc-app.vercel.app/)
+- [배포링크](https://ncnc-absolute.netlify.app/)
 
 ## 📌 요구 사항
 
