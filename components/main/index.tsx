@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/router';
 
+import GridItem from '../grid/grid-item';
+import GridContainer from '../grid/grid-container';
 import ItemBox from '@/components/item-box';
 import Carousel from '@/components/main/carousel';
 
 import styles from '@/components/main/styles.module.scss';
 import { SaleItemType } from '@/types/saleItem';
 import { CategoryType } from '@/types/category';
-import BrandGrid from '@/components/brand/brand-grid';
-import Link from 'next/link';
 
 interface HomeProps {
   saleItem: SaleItemType;
@@ -17,22 +18,25 @@ interface HomeProps {
 const cx = classNames.bind(styles);
 
 const Main = ({ saleItem, category }: HomeProps): JSX.Element => {
+  const router = useRouter();
+
   return (
     <div>
       <Carousel />
-      <div className={cx('category')}>
-        {category.conCategory1s.map((item, idx) => (
-          <Link
-            key={idx}
-            href={{
-              pathname: `/categories/${item.id}`,
-            }}>
-            <a className={cx('link')}>
-              <BrandGrid name={item.name} imageUrl={item.imageUrl} />
-            </a>
-          </Link>
-        ))}
-      </div>
+
+      <GridContainer>
+        <>
+          {category.conCategory1s.map(item => (
+            <GridItem
+              key={item.id}
+              name={item.name}
+              url={item.imageUrl}
+              handleClick={() => router.push(`/categories/${item.id}`)}
+            />
+          ))}
+        </>
+      </GridContainer>
+
       <div>
         <div className={cx('text-box')}>
           <div className={cx('highlight')}>놓치지 마세요</div>
@@ -50,6 +54,7 @@ const Main = ({ saleItem, category }: HomeProps): JSX.Element => {
           />
         ))}
       </div>
+
       <div className={cx('footer')}>
         회사소개서
         <br />

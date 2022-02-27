@@ -1,12 +1,13 @@
-import classNames from "classnames/bind";
-import { ConCategory1 } from "@/types/brandList";
+import classNames from 'classnames/bind';
+import { ConCategory1 } from '@/types/brandList';
 
-import styles from "./styles.module.scss";
-import BrandCategory from "@/components/brand/brand-category";
-import BrandGrid from "@/components/brand/brand-grid";
-import { CategoryType } from "@/types/category";
+import styles from './styles.module.scss';
+import BrandCategory from '@/components/brand/brand-category';
+import { CategoryType } from '@/types/category';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
+import GridItem from '@/components/grid/grid-item';
+import GridContainer from '@/components/grid/grid-container';
 
 interface BrandMainProps {
   conCategory1: ConCategory1[];
@@ -23,9 +24,20 @@ const Brand = ({
 }: BrandMainProps): JSX.Element => {
   const router = useRouter();
 
+  const routerItem = conCategory1.map(store => {
+    return {
+      pathname: `/brands/${store.id}`,
+      query: {
+        id: store.id,
+        categoryId: params,
+        brandItem: JSON.stringify(store),
+      },
+    };
+  });
+
   return (
     <div>
-      <div className={cx("nav-bar")}>
+      <div className={cx('nav-bar')}>
         {category.conCategory1s.map((sort, sortIdx) => {
           return (
             <BrandCategory
@@ -37,30 +49,21 @@ const Brand = ({
           );
         })}
       </div>
-      <div className={cx("main-wrapper")}>
-        {conCategory1.map((store, storeIdx) => (
-          <button
-            key={storeIdx}
-            className={cx("link")}
-            type="button"
-            onClick={() => {
-              router.push(
-                {
-                  pathname: `/brands/${store.id}`,
-                  query: {
-                    id: store.id,
-                    categoryId: params,
-                    brandItem: JSON.stringify(store),
-                  },
-                },
-                `/brands/${store.id}`
-              );
-            }}
-          >
-            <BrandGrid name={store.name} imageUrl={store.imageUrl} />
-          </button>
-        ))}
-      </div>
+
+      <GridContainer>
+        <>
+          {conCategory1.map((store, idx) => (
+            <GridItem
+              key={store.id}
+              name={store.name}
+              url={store.imageUrl}
+              handleClick={() =>
+                router.push(routerItem[idx], `/brands/${store.id}`)
+              }
+            />
+          ))}
+        </>
+      </GridContainer>
     </div>
   );
 };
