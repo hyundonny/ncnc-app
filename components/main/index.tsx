@@ -5,6 +5,7 @@ import GridItem from '../grid/grid-item';
 import GridContainer from '../grid/grid-container';
 import ItemBox from '@/components/item-box';
 import Carousel from '@/components/main/carousel';
+import Footer from '@/components/footer';
 
 import styles from '@/components/main/styles.module.scss';
 import { SaleItemType } from '@/types/saleItem';
@@ -55,14 +56,7 @@ const Main = ({ saleItem, category }: HomeProps): JSX.Element => {
         ))}
       </div>
 
-      <div className={cx('footer')}>
-        회사소개서
-        <br />
-        사업/제휴 문의
-        <br />
-        개인정보처리방침
-        <div className={cx('footer-title')}>(주) 더블엔씨</div>
-      </div>
+      <Footer />
     </div>
   );
 };

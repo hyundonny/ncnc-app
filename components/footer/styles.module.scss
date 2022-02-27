@@ -1,0 +1,25 @@
+.footer {
+  padding: 2.4rem;
+  font-size: 12px;
+}
+
+.footer-link {
+  display: block;
+
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 300;
+  line-height: 1.7;
+
+  & + & {
+    margin-top: 0.4rem;
+  }
+}
+
+.footer-title {
+  margin-top: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #333;
+  user-select: none;
+}
