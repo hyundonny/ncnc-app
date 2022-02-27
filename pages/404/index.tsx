@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import classNames from 'classnames/bind';
 
-import styles from '@/components/404/styles.module.scss';
+import styles from '@/pages/404/styles.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Custom404Component = () => {
+const Custom404Page = () => {
   return (
     <div className={cx('four-o-four')}>
       <h1 className={cx('title')}>404</h1>
@@ -16,4 +16,4 @@ const Custom404Component = () => {
   );
 };
 
-export default Custom404Component;
+export default Custom404Page;
