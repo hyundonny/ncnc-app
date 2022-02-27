@@ -29,7 +29,7 @@
 프로젝트 클론
 
 ```bash
-  git clone https://github.com/wanted-pre-onboading-10/ncnc-app.git
+  git clone https://github.com/hyundonny/ncnc-app.git
 ```
 
 프로젝트 디렉토리 들어가기
@@ -44,26 +44,25 @@
   npm install && npm run dev
 ```
 
-
 ## 📌 팀원
-|[이욱창](https://github.com/wook95)|[김태희](https://github.com/tae100k)|[문현돈](https://github.com/hyundonny)|[이경은](https://github.com/2kyung19)|
-| ----- | ---- | ----- |  ----- |
-|<img src="https://avatars.githubusercontent.com/u/80494742?v=4" width="200"/>|<img src="https://avatars.githubusercontent.com/u/78027252?v=4" width="200" />| <img src="https://avatars.githubusercontent.com/u/10048956?v=4" width="200" />|<img src="https://avatars.githubusercontent.com/u/32586712?v=4" width="200" />
 
+| [이욱창](https://github.com/wook95)                                           | [김태희](https://github.com/tae100k)                                           | [문현돈](https://github.com/hyundonny)                                         | [이경은](https://github.com/2kyung19)                                          |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| <img src="https://avatars.githubusercontent.com/u/80494742?v=4" width="200"/> | <img src="https://avatars.githubusercontent.com/u/78027252?v=4" width="200" /> | <img src="https://avatars.githubusercontent.com/u/10048956?v=4" width="200" /> | <img src="https://avatars.githubusercontent.com/u/32586712?v=4" width="200" /> |
 
 ## 📌 팀원별 역할 및 회고
 
 ### 김태희
 
 - 역할
-   - 카테고리별 브랜드 페이지 구현 (Navbar구현, 그리드 구현, SSR을 통한 API 통신)
+  - 카테고리별 브랜드 페이지 구현 (Navbar구현, 그리드 구현, SSR을 통한 API 통신)
 - 회고
   - 이번 프로젝트하면서 작성한 블로그 : [김태희 - 니콘내콘 사이트](https://www.notion.so/Nex-js-TS-SCSS-ncnc-bbfc68fd538c4665ac324c72bd4d73c0)
-
 
 ### 문현돈
 
 - 역할:
+
   - 레이아웃, 헤더, 사이드 메뉴, 고객센터 페이지, e2e 테스트 작성 담당. 개인 블로그를 NextJS로 만든 경험 덕에 빠른 속도로 전반적인 레이아웃과 고객센터 페이지를 만들 수 있었다. 뿐만 아니라 이전 과제에서 사이드 메뉴를 만든 경험이 있어 이번에도 효율적으로 사이드 메뉴를 구현할 수 있었다. 다만 참고용으로 주어진 Figma 디자인과 실제 홈페이지 간에 차이가 존재해 어떤 방식으로 디자인을 구현해야 할 지 쉽게 파악하지 못한 부분도 더러 있었다. 이런 경우에는 팀원들과 함께 사용자가 가장 사용하기 편한 방식에 대해 논의했고, 이를 기반으로 페이지를 구현했다.
 
 - 회고
@@ -72,6 +71,7 @@
 ### 이경은
 
 - 역할
+
   - 홈 화면 및 상품리스트 구현
   - 무한 캐러셀 구현
   - 아이템 박스 컴포넌트 구현
@@ -83,6 +83,7 @@
 ### 이욱창
 
 - 역할
+
   - 상품 상세 페이지 구현
   - 3단으로 움직이는 버튼클릭,옵션 선택, 구매 기능
 
