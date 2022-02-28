@@ -1,12 +1,12 @@
-@import "@/styles/variable.scss";
+@import '@/styles/variable.scss';
 
-.nav-button {
+.slider-item {
   font-size: 1.4rem;
   color: $black;
+  padding: 1.1rem;
+  display: inline-block;
   cursor: pointer;
-  line-height: 1.2;
-  flex-shrink: 0;
-  padding: 1.1rem 0;
+  border-bottom: 0.2rem solid transparent;
 }
 
 .active {

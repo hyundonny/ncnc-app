@@ -1,21 +1,18 @@
-import classNames from 'classnames/bind';
-import { ConCategory1 } from '@/types/brandList';
-
-import styles from './styles.module.scss';
-import BrandCategory from '@/components/brand/brand-category';
-import { CategoryType } from '@/types/category';
-
 import { useRouter } from 'next/router';
+
 import GridItem from '@/components/grid/grid-item';
 import GridContainer from '@/components/grid/grid-container';
+import Slider from '@/components/slider/slider';
+import SliderItem from '@/components/slider/slider-item';
+
+import { ConCategory1 } from '@/types/brandList';
+import { CategoryType } from '@/types/category';
 
 interface BrandMainProps {
   conCategory1: ConCategory1[];
   category: CategoryType;
   params: number;
 }
-
-const cx = classNames.bind(styles);
 
 const Brand = ({
   conCategory1,
@@ -37,18 +34,20 @@ const Brand = ({
 
   return (
     <div>
-      <div className={cx('nav-bar')}>
-        {category.conCategory1s.map((sort, sortIdx) => {
-          return (
-            <BrandCategory
-              key={sortIdx}
-              name={sort.name}
-              id={sort.id}
-              params={params}
-            />
-          );
-        })}
-      </div>
+      <Slider>
+        <>
+          {category.conCategory1s.map(cat => {
+            return (
+              <SliderItem
+                key={cat.id}
+                name={cat.name}
+                id={cat.id}
+                params={params}
+              />
+            );
+          })}
+        </>
+      </Slider>
 
       <GridContainer>
         <>
