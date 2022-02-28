@@ -24,7 +24,7 @@ function Layout({ children }: { children: React.ReactNode }) {
     if (mainRef.current) {
       mainRef.current.scrollTo(0, 0);
     }
-  }, [pathname]);
+  });
 
   return (
     <>

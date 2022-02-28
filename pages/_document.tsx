@@ -8,6 +8,7 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="description" content="NCNC app clone" />
+          <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
         </Head>
         <body>
           <Main />

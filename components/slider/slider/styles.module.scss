@@ -1,27 +1,18 @@
 @import '@/styles/variable.scss';
 
 .slider {
-  background-color: white;
+  background-color: $white;
+  padding: 0 1.5rem;
 
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 
   border-bottom: #c4c4c4 0.1rem solid;
-
-  cursor: grab;
   user-select: none;
+  cursor: pointer;
 
   &::-webkit-scrollbar {
-    height: 0.3rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: $gray300;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 1rem;
-    background: $gray600;
+    display: none;
   }
 }
