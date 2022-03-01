@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
 
-import styles from '@/components/main/carousel/styles.module.scss';
-import bannerList, { fakeBanner } from 'constants/banner';
-import CarouselBtn from './carousel-btn';
+import styles from '@/components/carousel/styles.module.scss';
+import { fakeBanner, bannerList } from '@/constants/banner';
+import CarouselBtn from '@/components/carousel/carousel-btn';
 
 const cx = classNames.bind(styles);
 

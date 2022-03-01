@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from '@/components/main/carousel/carousel-btn/styles.module.scss';
+import styles from '@/components/carousel/carousel-btn/styles.module.scss';
 
 interface CarouselBtnProps {
   bannerLen: number;
