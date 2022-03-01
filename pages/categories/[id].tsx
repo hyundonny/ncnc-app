@@ -1,39 +1,87 @@
-import { GetServerSideProps } from "next";
-import Brand from "@/components/brand/brand-main";
-import { ConCategory1 } from "@/types/brandList";
-import { CategoryType } from "@/types/category";
-import { getCategory, getBrandDetail } from "@/lib/brand";
-import DefaultHeader from "@/components/headers/default-header";
+import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+
+import DefaultHeader from '@/components/headers/default-header';
+import Slider from '@/components/slider/slider';
+import SliderItem from '@/components/slider/slider-item';
+import GridItem from '@/components/grid/grid-item';
+import GridContainer from '@/components/grid/grid-container';
+
+import { getCategories, getBrandsPerCategory } from '@/lib/categories';
+import { ConCategory1 } from '@/types/brandList';
+import { CategoryType } from '@/types/category';
 
 interface BrandMainProps {
-  conCategory1: ConCategory1[];
-  category: CategoryType;
+  brands: ConCategory1[];
+  categories: CategoryType;
   params: number;
 }
 
-const BrandsItem = ({ conCategory1, category, params }: BrandMainProps) => {
+const Categories = ({ brands, categories, params }: BrandMainProps) => {
+  const router = useRouter();
+
+  const routerItem = brands.map(store => {
+    return {
+      pathname: `/brands/${store.id}`,
+      query: {
+        id: store.id,
+        categoryId: params,
+        brandItem: JSON.stringify(store),
+      },
+    };
+  });
+
   return (
     <>
       <DefaultHeader
-        title={category.conCategory1s.find((item) => item.id === params)?.name}
+        title={categories.conCategory1s.find(item => item.id === params)?.name}
       />
-      <Brand conCategory1={conCategory1} category={category} params={params} />
+      <Slider>
+        <>
+          {categories.conCategory1s.map(cat => {
+            return (
+              <SliderItem
+                key={cat.id}
+                name={cat.name}
+                id={cat.id}
+                params={params}
+              />
+            );
+          })}
+        </>
+      </Slider>
+
+      <GridContainer>
+        <>
+          {brands.map((store, idx) => (
+            <GridItem
+              key={store.id}
+              name={store.name}
+              url={store.imageUrl}
+              handleClick={() =>
+                router.push(routerItem[idx], `/brands/${store.id}`)
+              }
+            />
+          ))}
+        </>
+      </GridContainer>
     </>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { data } = await getBrandDetail(Number(query.id));
-  const category = await getCategory();
-  const params = Number(query.id);
+  const [brandsResponse, categoriesResponse] = await Promise.all([
+    getBrandsPerCategory(Number(query.id)),
+    getCategories(),
+  ]);
 
   return {
     props: {
-      conCategory1: data.conCategory1.conCategory2s,
-      category: category.data,
-      params,
+      brands: brandsResponse.data.conCategory1.conCategory2s,
+      categories: categoriesResponse.data,
+      params: Number(query.id),
     },
   };
 };
 
-export default BrandsItem;
+export default Categories;
