@@ -1,24 +1,24 @@
-export type ConCategory1 = {
+export type Category = {
   id: number;
   name: string;
   discountRate: number;
   imageUrl: string;
-  conCategory2s: ConCategory2[];
+  conCategory2s: Brand[];
 };
 
-export type ConCategory2 = {
+export interface Brand {
   id: number;
   name: string;
   conCategory1Id: number;
   imageUrl: string;
-  conItems: ConItem[];
-};
+  conItems: Product[];
+}
 
-export type ConItem = {
+export interface Product {
   id: number;
   name: string;
   originalPrice: number;
   minSellingPrice: number;
   count: number;
   imageUrl: string;
-};
+}

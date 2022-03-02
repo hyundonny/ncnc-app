@@ -1,0 +1,16 @@
+@import '@/styles/variable.scss';
+
+.item-count {
+  margin-bottom: 1rem;
+  padding: 1.2rem 2rem;
+
+  font-weight: 500;
+  font-size: 1.4rem;
+  border-top: 0.1rem solid $container_bg;
+  color: $gray;
+  background-color: $white;
+}
+
+.item-count > span {
+  color: $black;
+}

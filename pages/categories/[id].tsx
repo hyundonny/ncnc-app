@@ -8,12 +8,12 @@ import GridItem from '@/components/grid/grid-item';
 import GridContainer from '@/components/grid/grid-container';
 
 import { getCategories, getBrandsPerCategory } from '@/lib/categories';
-import { ConCategory1 } from '@/types/brandList';
-import { CategoryType } from '@/types/category';
+import { Brand } from '@/types/brandList';
+import { ProductCategory } from '@/types/category';
 
 interface BrandMainProps {
-  brands: ConCategory1[];
-  categories: CategoryType;
+  brands: Brand[];
+  categories: ProductCategory[];
   params: number;
 }
 
@@ -34,10 +34,10 @@ const Categories = ({ brands, categories, params }: BrandMainProps) => {
   return (
     <>
       <DefaultHeader
-        title={categories.conCategory1s.find(item => item.id === params)?.name}
+        title={categories.find(item => item.id === params)?.name}
       />
       <Slider>
-        {categories.conCategory1s.map(cat => {
+        {categories.map(cat => {
           return (
             <SliderItem
               key={cat.id}
@@ -50,13 +50,16 @@ const Categories = ({ brands, categories, params }: BrandMainProps) => {
       </Slider>
 
       <GridContainer>
-        {brands.map((store, idx) => (
+        {brands.map((brand, idx) => (
           <GridItem
-            key={store.id}
-            name={store.name}
-            url={store.imageUrl}
+            key={brand.id}
+            name={brand.name}
+            url={brand.imageUrl}
             handleClick={() =>
-              router.push(routerItem[idx], `/brands/${store.id}`)
+              router.push(
+                routerItem[idx],
+                `/brands/${brand.conCategory1Id}/${brand.id}`,
+              )
             }
           />
         ))}
@@ -66,15 +69,15 @@ const Categories = ({ brands, categories, params }: BrandMainProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const [brandsResponse, categoriesResponse] = await Promise.all([
+  const [brands, categories] = await Promise.all([
     getBrandsPerCategory(Number(query.id)),
     getCategories(),
   ]);
 
   return {
     props: {
-      brands: brandsResponse.data.conCategory1.conCategory2s,
-      categories: categoriesResponse,
+      brands,
+      categories,
       params: Number(query.id),
     },
   };

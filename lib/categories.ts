@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { ConCategory1 } from '@/types/brandList';
+import { Category } from '@/types/brandList';
 import { ProductCategory } from '@/types/category';
-const API = axios.create({ baseURL: 'https://api2.ncnc.app' });
 
-export const getBrandsPerCategory = (categoryId: number) =>
-  API.get<{ conCategory1: ConCategory1 }>(
-    `con-category1s/${categoryId}/nested`,
-  );
+export const getBrandsPerCategory = async (categoryId: number) => {
+  const URL = `https://api2.ncnc.app/con-category1s/${categoryId}/nested`;
+  const { data } = await axios.get<{ conCategory1: Category }>(URL);
+  return data.conCategory1.conCategory2s;
+};
 
 export const getCategories = async () => {
   const CATEGORIES_URL = 'https://api2.ncnc.app/con-category1s';
