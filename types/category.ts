@@ -1,10 +1,6 @@
-export interface CategoryType {
-  conCategory1s: ConCategory1[];
-}
-
-export type ConCategory1 = {
+export interface ProductCategory {
   id: number;
   name: string;
   discountRate: number;
   imageUrl: string;
-};
+}

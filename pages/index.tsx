@@ -1,3 +1,4 @@
+import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import HomeHeader from '@/components/headers/home-header';
@@ -11,13 +12,12 @@ import Footer from '@/components/footer';
 import { useDrawer } from '@/context/DrawerContext';
 import { getSaleItems } from '@/lib/home-api';
 import { getCategories } from '@/lib/categories';
-import { CategoryType } from '@/types/category';
-import { SaleItemType } from '@/types/saleItem';
-import { GetServerSideProps, NextPage } from 'next';
+import { ProductCategory } from '@/types/category';
+import { ModifiedSaleItem } from '@/types/saleItem';
 
 interface SaleItemProps {
-  saleItems: SaleItemType;
-  categories: CategoryType;
+  saleItems: ModifiedSaleItem[];
+  categories: ProductCategory[];
 }
 
 const Home: NextPage<SaleItemProps> = ({
@@ -32,27 +32,27 @@ const Home: NextPage<SaleItemProps> = ({
       <HomeHeader toggleDrawer={toggleDrawer} />
       <Carousel />
       <GridContainer>
-        <>
-          {categories.conCategory1s.map(item => (
-            <GridItem
-              key={item.id}
-              name={item.name}
-              url={item.imageUrl}
-              handleClick={() => router.push(`/categories/${item.id}`)}
-            />
-          ))}
-        </>
+        {categories.map(item => (
+          <GridItem
+            key={item.id}
+            name={item.name}
+            url={item.imageUrl}
+            handleClick={() => router.push(`/categories/${item.id}`)}
+          />
+        ))}
       </GridContainer>
+
       <SectionTitle highlight="놓치지 마세요" title="오늘의 땡처리콘!" />
-      {saleItems.conItems.map(item => (
+
+      {saleItems.map(item => (
         <ItemBox
           key={item.id}
           name={item.name}
-          store={item.conCategory2.name}
+          store={item.brand}
           discount={item.discountRate}
-          price={item.ncSellingPrice}
+          price={item.sellingPrice}
           original={item.originalPrice}
-          image={item.imageUrl}
+          image={item.imageSrc}
         />
       ))}
       <Footer />
@@ -68,8 +68,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      saleItems: saleItems.data,
-      categories: categories.data,
+      saleItems,
+      categories,
     },
   };
 };

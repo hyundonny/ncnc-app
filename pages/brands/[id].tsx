@@ -1,10 +1,9 @@
-import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import DefaultHeader from '@/components/headers/default-header';
 import ItemList from '@/components/item-list';
 
-const BrandsItem: NextPage = () => {
+const BrandsItem = () => {
   const router = useRouter();
   const object = router.query.brandItem as string;
 

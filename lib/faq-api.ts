@@ -1,14 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   Category,
-  Items,
   CategoryResponse,
   ItemsResponse,
   ItemsObject,
-} from "@/types/contacts";
+} from '@/types/contacts';
 
 export const getFaqCategories = async () => {
-  const FAQ_CATEGORIES_URL = "https://api2.ncnc.app/qa-types";
+  const FAQ_CATEGORIES_URL = 'https://api2.ncnc.app/qa-types';
   const {
     data: { qaTypes },
   } = await axios.get<CategoryResponse>(FAQ_CATEGORIES_URL);
@@ -17,7 +16,7 @@ export const getFaqCategories = async () => {
 };
 
 export const getFaqItems = async (types: Category[]) => {
-  const FAQ_ITEMS_URL = "https://api2.ncnc.app/qas?qaTypeId=";
+  const FAQ_ITEMS_URL = 'https://api2.ncnc.app/qas?qaTypeId=';
 
   const promises = [];
 

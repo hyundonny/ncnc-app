@@ -37,33 +37,29 @@ const Categories = ({ brands, categories, params }: BrandMainProps) => {
         title={categories.conCategory1s.find(item => item.id === params)?.name}
       />
       <Slider>
-        <>
-          {categories.conCategory1s.map(cat => {
-            return (
-              <SliderItem
-                key={cat.id}
-                name={cat.name}
-                id={cat.id}
-                params={params}
-              />
-            );
-          })}
-        </>
+        {categories.conCategory1s.map(cat => {
+          return (
+            <SliderItem
+              key={cat.id}
+              name={cat.name}
+              id={cat.id}
+              params={params}
+            />
+          );
+        })}
       </Slider>
 
       <GridContainer>
-        <>
-          {brands.map((store, idx) => (
-            <GridItem
-              key={store.id}
-              name={store.name}
-              url={store.imageUrl}
-              handleClick={() =>
-                router.push(routerItem[idx], `/brands/${store.id}`)
-              }
-            />
-          ))}
-        </>
+        {brands.map((store, idx) => (
+          <GridItem
+            key={store.id}
+            name={store.name}
+            url={store.imageUrl}
+            handleClick={() =>
+              router.push(routerItem[idx], `/brands/${store.id}`)
+            }
+          />
+        ))}
       </GridContainer>
     </>
   );
@@ -78,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return {
     props: {
       brands: brandsResponse.data.conCategory1.conCategory2s,
-      categories: categoriesResponse.data,
+      categories: categoriesResponse,
       params: Number(query.id),
     },
   };

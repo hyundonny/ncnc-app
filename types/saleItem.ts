@@ -1,48 +1,31 @@
-export type SaleItemType = {
-  conItems: ConItems[];
-};
-
-export type ConItems = {
+export interface SaleItemResponse {
   id: number;
   name: string;
   originalPrice: number;
-  createdAt: string;
-  sfId: string;
-  minSellingPrice: number;
   ncSellingPrice: number;
-  count: number;
-  information: any;
-  tip: any;
-  warning?: string;
   discountRate: number;
-  askingPrice: number;
-  isRefuse: number;
-  isBlock: number;
-  info: any;
-  isOnlyAccount: number;
   conCategory2Id: number;
   imageUrl: string;
-  conCategory2: ConCategory2;
-};
+  conCategory2: SaleItemBrand;
+}
 
-export type ConCategory2 = {
+interface SaleItemBrand {
   id: number;
   name: string;
-  adminUserId: number;
-  priority: number;
-  createdAt: string;
-  conCategory1Id: number;
-  info: any;
-  imageUrl: string;
-  conCategory1: ConCategory1;
-};
+  conCategory1: SaleItemCategory;
+}
 
-export type ConCategory1 = {
+interface SaleItemCategory {
   id: number;
   name: string;
-  createdAt: string;
-  priority: number;
+}
+
+export interface ModifiedSaleItem {
+  id: number;
+  name: string;
+  brand: string;
   discountRate: number;
-  info: string;
-  imageUrl: string;
-};
+  sellingPrice: number;
+  originalPrice: number;
+  imageSrc: string;
+}

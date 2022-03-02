@@ -4,7 +4,7 @@ import styles from '@/components/slider/slider/styles.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Slider = ({ children }: { children: JSX.Element }) => {
+const Slider = ({ children }: { children: JSX.Element[] }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [mouseDown, setMouseDown] = useState(false);
   const [mouseStartX, setMouseStartX] = useState(0);

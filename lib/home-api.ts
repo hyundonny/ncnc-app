@@ -1,7 +1,22 @@
 import axios from 'axios';
-import { SaleItemType } from '@/types/saleItem';
+import { SaleItemResponse } from '@/types/saleItem';
 
-const API = axios.create({ baseURL: 'https://api2.ncnc.app' });
+export const getSaleItems = async () => {
+  const SALE_ITEMS_URL = 'https://api2.ncnc.app/con-items/soon';
 
-export const getSaleItems = () =>
-  API.get<{ conItems: SaleItemType }>(`con-items/soon`);
+  const {
+    data: { conItems },
+  } = await axios.get<{ conItems: SaleItemResponse[] }>(SALE_ITEMS_URL);
+
+  return conItems.map(item => {
+    return {
+      id: item.id,
+      name: item.name,
+      brand: item.conCategory2.name,
+      discountRate: item.discountRate,
+      sellingPrice: item.ncSellingPrice,
+      originalPrice: item.originalPrice,
+      imageSrc: item.imageUrl,
+    };
+  });
+};
