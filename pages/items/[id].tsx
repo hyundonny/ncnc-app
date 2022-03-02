@@ -1,12 +1,18 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetServerSideProps } from 'next';
 
+import DefaultHeader from '@/components/headers/default-header';
 import ItemDetail from '@/components/item-detail';
 
 import { getProductDetail } from '@/lib/api';
 import { ItemDetailType } from '@/types/productDetail';
 
 const ItemDetailPage = ({ conItem }: { conItem: ItemDetailType }) => {
-  return <ItemDetail conItem={conItem} />;
+  return (
+    <>
+      <DefaultHeader />
+      <ItemDetail conItem={conItem} />
+    </>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

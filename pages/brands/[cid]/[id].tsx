@@ -26,7 +26,7 @@ const BrandsItem: NextPage<BrandsProps> = ({ brand, items }: BrandsProps) => {
       </div>
 
       {items.map(item => (
-        <ItemBox key={item.id} item={item} />
+        <ItemBox key={item.id} item={item} isAnchorElement={true} />
       ))}
     </>
   );

@@ -8,7 +8,12 @@ import { addComma } from 'utils/addComma';
 
 const cx = classNames.bind(styles);
 
-const ItemBox = ({ item }: { item: ModifiedSaleItem }): JSX.Element => {
+interface ItemBoxProps {
+  item: ModifiedSaleItem;
+  isAnchorElement: boolean;
+}
+
+const ItemBox = ({ item, isAnchorElement }: ItemBoxProps): JSX.Element => {
   const {
     id,
     name,
@@ -19,27 +24,34 @@ const ItemBox = ({ item }: { item: ModifiedSaleItem }): JSX.Element => {
     imageSrc,
   } = item;
 
-  return (
-    <Link href={`/items/${id}`}>
-      <a className={cx('item-box')}>
-        <img className={cx('item-image')} src={imageSrc} alt="gifticon item" />
-
-        <div>
-          <p className={cx('item-brand')}>{brand}</p>
-          <p className={cx('item-name')}>{name}</p>
-          <div className={cx('item-price-info')}>
-            <span className={cx('item-discount-rate')}>{discountRate}%</span>
-            <span className={cx('item-selling-price')}>
-              {addComma(sellingPrice)}원
-            </span>
-            <span className={cx('item-original-price')}>
-              {addComma(originalPrice)}원
-            </span>
-          </div>
+  const boxContents = (
+    <>
+      <img className={cx('item-image')} src={imageSrc} alt="gifticon item" />
+      <div>
+        <p className={cx('item-brand')}>{brand}</p>
+        <p className={cx('item-name')}>{name}</p>
+        <div className={cx('item-price-info')}>
+          <span className={cx('item-discount-rate')}>{discountRate}%</span>
+          <span className={cx('item-selling-price')}>
+            {addComma(sellingPrice)}원
+          </span>
+          <span className={cx('item-original-price')}>
+            {addComma(originalPrice)}원
+          </span>
         </div>
-      </a>
-    </Link>
+      </div>
+    </>
   );
+
+  if (isAnchorElement) {
+    return (
+      <Link href={`/items/${id}`}>
+        <a className={cx('item-box')}>{boxContents}</a>
+      </Link>
+    );
+  }
+
+  return <div className={cx('item-box')}>{boxContents}</div>;
 };
 
 export default ItemBox;

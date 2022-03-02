@@ -45,7 +45,7 @@ const Home: NextPage<SaleItemProps> = ({
       <SectionTitle highlight="놓치지 마세요" title="오늘의 땡처리콘!" />
 
       {saleItems.map(item => (
-        <ItemBox key={item.id} item={item} />
+        <ItemBox key={item.id} item={item} isAnchorElement={true} />
       ))}
       <Footer />
     </>

@@ -5,9 +5,10 @@
   align-items: center;
   gap: 2rem;
 
-  margin-bottom: 1px;
+  margin-top: 1px;
   padding: 2.5rem 2rem;
   background-color: $white;
+  user-select: none;
 }
 
 .item-image {

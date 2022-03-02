@@ -63,18 +63,21 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
         ]),
     );
 
+  const item = {
+    id: conItem.id,
+    name: conItem.name,
+    brand: conItem.conCategory2.name,
+    discountRate: conItem.discountRate,
+    sellingPrice: conItem.ncSellingPrice,
+    originalPrice: conItem.originalPrice,
+    imageSrc: conItem.imageUrl,
+  };
+
   return (
-    <div className={cx('container')}>
-      <DefaultHeader />
+    <>
       <main className={cx('content-wrapper')}>
-        <ItemBox
-          name={conItem.name}
-          store={conItem.conCategory2.name}
-          discount={conItem.discountRate}
-          price={conItem.minSellingPrice}
-          original={conItem.originalPrice}
-          image={conItem.imageUrl}
-        />
+        <ItemBox item={item} isAnchorElement={false} />
+
         <div className={cx('content-box')}>
           {splitWarningArray &&
             splitWarningArray.map(warning => {
@@ -87,6 +90,7 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
             })}
         </div>
       </main>
+
       <section className={cx('option-section', { hide: !isActive })}>
         <div className={cx('option-box')}>
           <div className={cx('option-header')}>
@@ -164,7 +168,7 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
           type="button"
           onClick={closeOption}></button>
       </section>
-    </div>
+    </>
   );
 };
 
