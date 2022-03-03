@@ -1,0 +1,31 @@
+@import '@/styles/variable.scss';
+
+.warning-item {
+  & + & {
+    margin-top: 1.8rem;
+  }
+}
+
+.warning-item-title {
+  margin-bottom: 1rem;
+  color: $black;
+  font-size: 1.4rem;
+}
+
+.warning-item-content {
+  color: $gray600;
+  font-size: 1.4rem;
+  position: relative;
+  padding-left: 1rem;
+
+  & + & {
+    margin-top: 0.5rem;
+  }
+
+  &::before {
+    content: '·';
+    position: absolute;
+    top: -2px;
+    left: 0;
+  }
+}

@@ -2,35 +2,6 @@
 
 $button-height: 5.5rem;
 
-.nav {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  height: 5.8rem;
-  background-color: #edf9fe;
-  border-bottom: 1px solid $gray300;
-  z-index: 2;
-}
-
-.content-box {
-  white-space: pre;
-  padding: 2rem 2rem 0;
-  border-top: 1px solid $body-bg;
-}
-
-.content-title {
-  margin-bottom: 0.5rem;
-  color: $gray800;
-  font-size: 1.4rem;
-}
-.content-paragraph {
-  margin-bottom: 2rem;
-  color: $gray600;
-  font-size: 1.4rem;
-}
-
 .option-section {
   position: fixed;
   bottom: $button-height;

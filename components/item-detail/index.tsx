@@ -1,16 +1,16 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 
-import DefaultHeader from '@/components/headers/default-header';
+import WarningItem from '../warning-item';
 import CloseIcon from '@/components/icons/CloseIcon';
 import PencilIcon from '@/components/icons/PencilIcon';
-import ItemBox from '@/components/item-box';
 
 import { ItemDetailType, OptionType } from '@/types/productDetail';
 import { calcDiscountRate } from '@/utils/calcDiscountRate';
 import { addComma } from '@/utils/addComma';
 import styles from '@/components/item-detail/styles.module.scss';
-import { useRouter } from 'next/router';
+import { modifyWarning } from '@/utils/modifyWarning';
 
 interface ItemDetailProps {
   conItem: ItemDetailType;
@@ -52,45 +52,9 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
       sellingPrice: option.sellingPrice,
     });
   });
-  const warningArray = conItem.warning?.split('\n\n');
-  const splitWarningArray = warningArray
-    ?.map(strings => strings.split(']\n'))
-    ?.map(
-      strings =>
-        (strings = [
-          strings[0].replace('[', ''),
-          strings[1]?.replace(/-/g, '·'),
-        ]),
-    );
-
-  const item = {
-    id: conItem.id,
-    name: conItem.name,
-    brand: conItem.conCategory2.name,
-    discountRate: conItem.discountRate,
-    sellingPrice: conItem.ncSellingPrice,
-    originalPrice: conItem.originalPrice,
-    imageSrc: conItem.imageUrl,
-  };
 
   return (
     <>
-      <main className={cx('content-wrapper')}>
-        <ItemBox item={item} isAnchorElement={false} />
-
-        <div className={cx('content-box')}>
-          {splitWarningArray &&
-            splitWarningArray.map(warning => {
-              return (
-                <div key={warning[0]}>
-                  <div className={cx('content-title')}>{warning[0]}</div>
-                  <div className={cx('content-paragraph')}>{warning[1]}</div>
-                </div>
-              );
-            })}
-        </div>
-      </main>
-
       <section className={cx('option-section', { hide: !isActive })}>
         <div className={cx('option-box')}>
           <div className={cx('option-header')}>
