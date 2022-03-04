@@ -1,19 +1,35 @@
 import { GetServerSideProps } from 'next';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import DefaultHeader from '@/components/headers/default-header';
-import ItemDetail from '@/components/item-detail';
 import ItemBox from '@/components/item-box';
 import WarningItem from '@/components/warning-item';
+import ItemOptionsContainer from '@/components/item-options/item-options-container';
 
 import { getProductDetail } from '@/lib/api';
-import { ItemDetailType } from '@/types/productDetail';
 import { modifyWarning } from '@/utils/modifyWarning';
+import { ItemDetailType, OptionType } from '@/types/productDetail';
+
 import styles from '@/styles/pages/items/styles.module.scss';
+import ItemOption from '@/components/item-options/item-option';
 
 const cx = classNames.bind(styles);
 
 const ItemDetailPage = ({ conItem }: { conItem: ItemDetailType }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
+
+  const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
+    setSelectedOption(null);
+  };
+
+  const selectOption = ({ expireAt, count, sellingPrice }: OptionType) => {
+    setSelectedOption({ expireAt, count, sellingPrice });
+    setMenuOpen(false);
+  };
+
   const item = {
     id: conItem.id,
     name: conItem.name,
@@ -29,13 +45,38 @@ const ItemDetailPage = ({ conItem }: { conItem: ItemDetailType }) => {
       <DefaultHeader />
       <div className={cx('item-info-container')}>
         <ItemBox item={item} isAnchorElement={false} />
-        <div className={cx('warning-container')}>
-          {conItem.warning &&
-            modifyWarning(conItem.warning).map(warning => (
-              <WarningItem key={warning.title} warning={warning} />
-            ))}
+        <div className={cx('main-container')}>
+          <div className={cx('warning-container')}>
+            {conItem.warning &&
+              modifyWarning(conItem.warning).map(warning => (
+                <WarningItem key={warning.title} warning={warning} />
+              ))}
+          </div>
+          <div
+            className={cx({ overlay: true, closed: !menuOpen })}
+            onClick={toggleMenu}></div>
         </div>
-        <ItemDetail conItem={conItem} />
+        {selectedOption && (
+          <div className={cx('selected-option-container')}>
+            <p className={cx('selected-option')}>{selectedOption.expireAt}</p>
+          </div>
+        )}
+        <div className={cx('sub-container')}>
+          <button
+            type="button"
+            className={cx('item-toggle-button')}
+            disabled={menuOpen}
+            onClick={toggleMenu}>
+            구매하기
+          </button>
+          <ItemOptionsContainer open={menuOpen} toggle={toggleMenu}>
+            <ItemOption />
+            <ItemOption />
+            <ItemOption />
+            <ItemOption />
+            <ItemOption />
+          </ItemOptionsContainer>
+        </div>
       </div>
     </>
   );

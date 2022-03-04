@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 
-import WarningItem from '../warning-item';
 import CloseIcon from '@/components/icons/CloseIcon';
 import PencilIcon from '@/components/icons/PencilIcon';
 
@@ -10,7 +9,6 @@ import { ItemDetailType, OptionType } from '@/types/productDetail';
 import { calcDiscountRate } from '@/utils/calcDiscountRate';
 import { addComma } from '@/utils/addComma';
 import styles from '@/components/item-detail/styles.module.scss';
-import { modifyWarning } from '@/utils/modifyWarning';
 
 interface ItemDetailProps {
   conItem: ItemDetailType;

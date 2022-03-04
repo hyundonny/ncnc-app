@@ -1,0 +1,48 @@
+@import '@/styles/variable.scss';
+
+.item-options {
+  width: 100%;
+
+  opacity: 0.25;
+  position: absolute;
+  transition: bottom 400ms ease, opacity 100ms ease;
+  z-index: 10;
+}
+
+.item-options.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.item-options-title {
+  background-color: $container-bg;
+  padding: 2rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-options-list {
+  background-color: $white;
+  height: 256px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $gray300;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid $gray500;
+  }
+}
+
+.close-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}

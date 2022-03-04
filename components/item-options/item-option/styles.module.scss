@@ -1,0 +1,50 @@
+@import '@/styles/variable.scss';
+
+.item-option + .item-option {
+  border-top: 1px solid #f1f3f4;
+}
+
+.item-option-grid {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem 2rem;
+  row-gap: 1rem;
+  column-gap: 2rem;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'expiryLabel expiryText discountRate'
+    'priceLabel priceText discountRate';
+
+  font-size: 1.6rem;
+  align-items: center;
+}
+
+.item-expiry-label {
+  grid-area: expiryLabel;
+}
+
+.item-price-label {
+  grid-area: priceLabel;
+}
+
+.item-expiry-label,
+.item-price-label {
+  color: $gray;
+  font-size: 1.2rem;
+}
+
+.item-expiry-text {
+  grid-area: expiryText;
+}
+
+.item-price-text {
+  grid-area: priceText;
+}
+
+.item-dc-rate {
+  grid-area: discountRate;
+  color: $highlight;
+}
