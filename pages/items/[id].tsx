@@ -13,6 +13,8 @@ import { ItemDetailType, OptionType } from '@/types/productDetail';
 
 import styles from '@/styles/pages/items/styles.module.scss';
 import ItemOption from '@/components/item-options/item-option';
+import PencilIcon from '@/components/icons/PencilIcon';
+import { modifyDate } from '@/utils/modifyDate';
 
 const cx = classNames.bind(styles);
 
@@ -58,7 +60,13 @@ const ItemDetailPage = ({ conItem }: { conItem: ItemDetailType }) => {
         </div>
         {selectedOption && (
           <div className={cx('selected-option-container')}>
-            <p className={cx('selected-option')}>{selectedOption.expireAt}</p>
+            <p className={cx('selected-option')} onClick={toggleMenu}>
+              <span>
+                {modifyDate(selectedOption.expireAt)} /{' '}
+                {selectedOption.sellingPrice}원
+              </span>
+              <PencilIcon className={cx('pencil-icon')} />
+            </p>
           </div>
         )}
         <div className={cx('sub-container')}>
@@ -70,11 +78,16 @@ const ItemDetailPage = ({ conItem }: { conItem: ItemDetailType }) => {
             구매하기
           </button>
           <ItemOptionsContainer open={menuOpen} toggle={toggleMenu}>
-            <ItemOption />
-            <ItemOption />
-            <ItemOption />
-            <ItemOption />
-            <ItemOption />
+            {conItem.options.map((option, idx) => {
+              return (
+                <ItemOption
+                  option={option}
+                  originalPrice={conItem.originalPrice}
+                  selectOption={selectOption}
+                  key={idx}
+                />
+              );
+            })}
           </ItemOptionsContainer>
         </div>
       </div>

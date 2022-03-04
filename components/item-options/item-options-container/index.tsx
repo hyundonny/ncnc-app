@@ -10,7 +10,7 @@ const ItemOptionsContainer = ({
   children,
 }: {
   open: boolean;
-  toggle: () => {};
+  toggle: () => void;
   children: JSX.Element[];
 }) => {
   const optionsContainerRef = useRef<HTMLDivElement>(null);

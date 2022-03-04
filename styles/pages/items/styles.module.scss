@@ -38,10 +38,26 @@
 .selected-option-container {
   border-top: 1px solid $gray300;
   padding: 2rem;
+  background-color: $white;
 }
 
 .selected-option {
+  padding: 1.5rem;
   background-color: $container-bg;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: $gray800;
+  user-select: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pencil-icon {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .sub-container {

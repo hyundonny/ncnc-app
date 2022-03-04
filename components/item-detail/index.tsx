@@ -2,13 +2,13 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 
-import CloseIcon from '@/components/icons/CloseIcon';
 import PencilIcon from '@/components/icons/PencilIcon';
 
 import { ItemDetailType, OptionType } from '@/types/productDetail';
 import { calcDiscountRate } from '@/utils/calcDiscountRate';
 import { addComma } from '@/utils/addComma';
 import styles from '@/components/item-detail/styles.module.scss';
+import { modifyDate } from '@/utils/modifyDate';
 
 interface ItemDetailProps {
   conItem: ItemDetailType;
@@ -53,54 +53,6 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
 
   return (
     <>
-      <section className={cx('option-section', { hide: !isActive })}>
-        <div className={cx('option-box')}>
-          <div className={cx('option-header')}>
-            옵션 선택하기
-            <button type="button" onClick={closeOption}>
-              <CloseIcon className={cx('close-icon')} />
-            </button>
-          </div>
-          <ul>
-            {newOptions.map(option => (
-              <li key={option.id}>
-                <button
-                  type="button"
-                  className={cx('option-each')}
-                  onClick={() => {
-                    chooseOption({
-                      expireAt: option.expireAt,
-                      count: option.count,
-                      sellingPrice: option.sellingPrice,
-                    });
-                  }}>
-                  <div className={cx('option-contents')}>
-                    <div className={cx('option-content')}>
-                      <p className={cx('option-content-title')}>유효기간</p>
-                      <p className={cx('option-content-title')}>할인가</p>
-                    </div>
-                    <div className={cx('option-content')}>
-                      <p className={cx('option-content-detail')}>
-                        {option.expireAt}
-                      </p>
-                      <p className={cx('option-content-detail')}>
-                        {addComma(option.sellingPrice)}
-                      </p>
-                    </div>
-                  </div>
-                  <p className={cx('option-discount')}>
-                    {calcDiscountRate(
-                      conItem.originalPrice,
-                      option.sellingPrice,
-                    )}{' '}
-                    %
-                  </p>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
       <button
         onClick={buyItem}
         type="button"
@@ -111,7 +63,9 @@ const ItemDetail = ({ conItem }: ItemDetailProps): JSX.Element => {
         className={cx('option-selected-box', { 'ready-buy': selectedOption })}>
         <button type="button" onClick={openOption} className={cx('re-select')}>
           {selectedOption &&
-            `${selectedOption.expireAt} / ${selectedOption.sellingPrice}원`}
+            `${modifyDate(selectedOption.expireAt)} / ${
+              selectedOption.sellingPrice
+            }원`}
           <PencilIcon className={cx('pencil-icon')} />
         </button>
       </section>
