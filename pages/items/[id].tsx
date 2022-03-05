@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 
@@ -30,6 +31,19 @@ const ItemDetailPage = ({ conItem }: { conItem: ItemDetailType }) => {
   const selectOption = ({ expireAt, count, sellingPrice }: OptionType) => {
     setSelectedOption({ expireAt, count, sellingPrice });
     setMenuOpen(false);
+  };
+
+  const router = useRouter();
+
+  const buyItem = () => {
+    if (!selectedOption) return;
+
+    alert('로그인 해주세요!');
+    router.push('/');
+  };
+
+  const handleButtonClick = () => {
+    toggleMenu();
   };
 
   const item = {
@@ -74,8 +88,8 @@ const ItemDetailPage = ({ conItem }: { conItem: ItemDetailType }) => {
             type="button"
             className={cx('item-toggle-button')}
             disabled={menuOpen}
-            onClick={toggleMenu}>
-            구매하기
+            onClick={selectedOption ? buyItem : toggleMenu}>
+            {selectedOption ? '구매하기' : '옵션 선택하기'}
           </button>
           <ItemOptionsContainer open={menuOpen} toggle={toggleMenu}>
             {conItem.options.map((option, idx) => {
