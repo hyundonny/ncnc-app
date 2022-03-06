@@ -20,6 +20,10 @@
   overflow-y: auto;
   border-top: 1px solid $gray300;
   height: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .overlay {

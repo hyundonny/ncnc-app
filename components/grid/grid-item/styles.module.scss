@@ -26,6 +26,10 @@
   transform: scale(1.05);
 }
 
+.grid--link:active .grid--item {
+  transform: scale(0.95);
+}
+
 .grid--image {
   width: 4.5rem;
   height: 4.5rem;

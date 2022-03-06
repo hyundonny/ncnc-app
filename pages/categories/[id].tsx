@@ -50,17 +50,12 @@ const Categories = ({ brands, categories, params }: BrandMainProps) => {
       </Slider>
 
       <GridContainer>
-        {brands.map((brand, idx) => (
+        {brands.map(brand => (
           <GridItem
             key={brand.id}
             name={brand.name}
             url={brand.imageUrl}
-            handleClick={() =>
-              router.push(
-                routerItem[idx],
-                `/brands/${brand.conCategory1Id}/${brand.id}`,
-              )
-            }
+            href={`/brands/${brand.conCategory1Id}/${brand.id}`}
           />
         ))}
       </GridContainer>

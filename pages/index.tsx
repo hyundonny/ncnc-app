@@ -37,7 +37,7 @@ const Home: NextPage<SaleItemProps> = ({
             key={item.id}
             name={item.name}
             url={item.imageUrl}
-            handleClick={() => router.push(`/categories/${item.id}`)}
+            href={`/categories/${item.id}`}
           />
         ))}
       </GridContainer>
