@@ -9,6 +9,9 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta name="description" content="NCNC app clone" />
           <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap"
+            rel="stylesheet"></link>
         </Head>
         <body>
           <Main />

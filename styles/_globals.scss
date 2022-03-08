@@ -1,6 +1,4 @@
 @import '@/styles/variable.scss';
-@import url('https://rsms.me/inter/inter.css');
-@import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css');
 
 *,
 *::before,
@@ -8,8 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: '-apple-system', 'BlinkMacSystemFont', 'Apple SD Gothic Neo',
-    'Inter', 'Spoqa Han Sans', sans-serif;
+  font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 html {
