@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import classNames from 'classnames/bind';
 
 import styles from '@/components/carousel/styles.module.scss';
-import { fakeBanner, bannerList } from '@/constants/banner';
 import CarouselBtn from '@/components/carousel/carousel-btn';
+
+import banner1 from 'assets/images/compressed-banner1.png';
+import banner2 from 'assets/images/compressed-banner2.png';
+import banner3 from 'assets/images/compressed-banner3.png';
+
+const bannerList = [banner1, banner2, banner3];
+const fakeBanner = banner1;
 
 const cx = classNames.bind(styles);
 
