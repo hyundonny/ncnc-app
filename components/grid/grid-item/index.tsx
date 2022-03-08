@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 import classNames from 'classnames/bind';
 
 import styles from '@/components/grid/grid-item/styles.module.scss';
@@ -17,7 +18,13 @@ const GridItem = ({ name, url, href }: GridItemProps) => {
     <Link href={href}>
       <a className={cx('grid--link')}>
         <figure className={cx('grid--item')}>
-          <img src={url} alt={name} className={cx('grid--image')} />
+          <Image
+            className={cx('grid--image')}
+            alt={name}
+            src={url}
+            width={45}
+            height={45}
+          />
           <figcaption>{name}</figcaption>
         </figure>
       </a>

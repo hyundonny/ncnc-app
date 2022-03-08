@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
+import Image from 'next/image';
 import classNames from 'classnames/bind';
 
 import { ModifiedSaleItem } from '@/types/saleItem';
@@ -26,7 +27,13 @@ const ItemBox = ({ item, isAnchorElement }: ItemBoxProps): JSX.Element => {
 
   const boxContents = (
     <>
-      <img className={cx('item-image')} src={imageSrc} alt="gifticon item" />
+      <Image
+        className={cx('item-image')}
+        alt={'gifticon item'}
+        src={imageSrc}
+        width={80}
+        height={80}
+      />
       <div>
         <p className={cx('item-brand')}>{brand}</p>
         <p className={cx('item-name')}>{name}</p>
