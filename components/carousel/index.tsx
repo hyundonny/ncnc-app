@@ -10,7 +10,6 @@ import banner2 from 'assets/images/compressed-banner2.png';
 import banner3 from 'assets/images/compressed-banner3.png';
 
 const bannerList = [banner1, banner2, banner3];
-const fakeBanner = banner1;
 
 const cx = classNames.bind(styles);
 
@@ -50,20 +49,19 @@ const Carousel = (): JSX.Element => {
       <div
         className={cx('carousel')}
         style={{
-          transform: `translateX(-${
-            bannerActive * (100 / (bannerList.length + 1))
-          }%)`,
+          transform: `translateX(-${bannerActive * 100}%)`,
           transitionDuration: `${speed}ms`,
         }}>
-        {[...bannerList, fakeBanner].map((item, idx) => (
+        {[...bannerList, bannerList[0]].map((item, idx) => (
           <div key={idx} className={cx('banner')}>
             <Image
               className={cx('img')}
               src={item}
               layout="fill"
               objectFit="cover"
-              priority={true}
+              priority={idx === 0}
               alt="banner"
+              placeholder="blur"
             />
           </div>
         ))}
